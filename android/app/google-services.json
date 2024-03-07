@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "29401195760",
+    "project_id": "cleanconnect-b5cc9",
+    "storage_bucket": "cleanconnect-b5cc9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29401195760:android:a8d9ae758ff8e50b934e35",
+        "android_client_info": {
+          "package_name": "com.cleanerconnect"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJLFZG0uVilcjWcJxrvhgxzNbxUeCqRk4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
