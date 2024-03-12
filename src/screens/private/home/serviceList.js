@@ -80,14 +80,14 @@ export default function ServiceListScreen({navigation}) {
         <View style={{paddingHorizontal: 10, flex: 1, marginTop: 10}}>
           <FlatList
             data={services}
-            renderItem={({item}) => (
+            renderItem={({item, i}) => (
               <RenderServiceList
                 item={item}
                 selected={{
                   selectedServices: selectedValue,
                   setSelectedServices: setSelectedValue,
                 }}
-                services={services}
+                index={i}
               />
             )}
             keyExtractor={item => item.id}

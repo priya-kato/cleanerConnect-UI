@@ -13,6 +13,9 @@ import {MyTabs} from '.';
 import ContactScreen from '../screens/private/profile/contact';
 import ServiceListScreen from '../screens/private/home/serviceList';
 import HistoryDetails from '../screens/private/history/historyDetails';
+import CreateContact from '../screens/private/user/createContact';
+import ChatScreen from '../screens/private/user/chatScreen';
+import FindExperts from '../screens/private/experts';
 
 const StackScreen = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -108,6 +111,9 @@ export const PrivateStackNavigator = ({tabScreens}) => {
     {name: 'ContactScreen', component: ContactScreen},
     {name: 'ServiceListScreen', component: ServiceListScreen},
     {name: 'HistoryDetails', component: HistoryDetails},
+    {name: 'CreateContact', component: CreateContact},
+    {name: 'ChatScreen', component: ChatScreen},
+    {name: 'FindExperts', component: FindExperts},
   ];
   return (
     <StackScreen.Navigator

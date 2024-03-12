@@ -9,7 +9,6 @@ export default function SplashScreen({navigation}) {
   const getIsValidUser = async () => {
     try {
       const getUser = await AsyncStorage.getItem('authuser');
-      console.log(getUser, 'getUser1');
       return getUser;
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -19,7 +18,6 @@ export default function SplashScreen({navigation}) {
   const fetchData = async () => {
     try {
       const getUser = await getIsValidUser();
-      console.log(getUser, 'getUser2');
       if (getUser) {
         navigation.navigate('private');
       } else {

@@ -4,7 +4,10 @@ import {windowHeight, windowWidth} from '../utills/Dimensions';
 import {COLORS} from '../assets/color';
 export default function MainFormButton({buttonTitle, ...rest}) {
   return (
-    <TouchableOpacity style={styles.buttonContainer} {...rest}>
+    <TouchableOpacity
+      testID="submit-button"
+      style={styles.buttonContainer}
+      {...rest}>
       <Text style={styles.buttonText}>{buttonTitle}</Text>
     </TouchableOpacity>
   );

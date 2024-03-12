@@ -7,3 +7,11 @@ export const createHomeService = body => {
 export const createService = body => {
   return connection.post('/api/service', body);
 };
+
+export const createContact = body => {
+  return connection.post('/user', body);
+};
+
+export const getUserApi = () => {
+  return connection.get('/user');
+};

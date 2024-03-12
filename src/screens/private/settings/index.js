@@ -7,7 +7,7 @@ export default function SettingScreen({navigation}) {
   return (
     <View style={{flex: 1, backgroundColor: COLORS.primary}}>
       <View>
-        <Header name="Chat with your keeper" isTab navigation={navigation} />
+        <Header name="Find Experts" isTab navigation={navigation} />
       </View>
 
       <ScreenView></ScreenView>

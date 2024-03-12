@@ -10,6 +10,8 @@ import AboutIcon from './vectorSvg/aboutIcon';
 import {LogoutIcon} from './vectorSvg/logoutIcon';
 import {ReferIcon} from './vectorSvg/referIcon';
 import {NextArrorwIcon} from './vectorSvg/netArrowIcon';
+import MessageIcon from './vectorSvg/message';
+import SendIcon from './vectorSvg/sendIcon';
 
 export {
   BackArrowIcon,
@@ -24,4 +26,6 @@ export {
   LogoutIcon,
   ReferIcon,
   NextArrorwIcon,
+  MessageIcon,
+  SendIcon
 };

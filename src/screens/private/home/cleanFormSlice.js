@@ -5,7 +5,7 @@ const formSlice = createSlice({
   name: 'form',
   initialState: {
     name: '',
-    hometype: '',
+    homeType: '',
     street: '',
     mobileNumber: '',
     country: '',
@@ -20,7 +20,7 @@ const formSlice = createSlice({
     },
     resetForm: state => {
       state.name = '';
-      state.hometype = '';
+      state.homeType = '';
       state.street = '';
       state.mobileNumber = '';
       state.country = '';

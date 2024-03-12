@@ -1,5 +1,12 @@
-import {View, Text, StyleSheet, ScrollView, TextInput} from 'react-native';
-import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Animated,
+  Vibration,
+} from 'react-native';
+import React, {useRef, useEffect, useState} from 'react';
 import Header from '../../../components/headers/header';
 import {COLORS} from '../../../components/assets/color';
 import ScreenView from '../../../components/commonScreen/screenView';
@@ -9,14 +16,16 @@ import MainFormButton from '../../../components/mainForm/mainButton';
 import {updateFormField, resetForm} from './cleanFormSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import {createCleanQuery} from '../../../hooks/createQuery/createCleanQuery';
-import axios from 'axios';
+import LottieView from 'lottie-react-native';
+import {ANIMATIONS} from '../../../components/animations';
+import ListItem from './listItem';
 
 export default function Cleanservice({navigation, route}) {
-  const {item} = route?.params;
   const dispatch = useDispatch();
-
-  dispatch(updateFormField({field: 'hometype', value: item.name}));
-
+  dispatch(
+    updateFormField({field: 'homeType', value: route?.params?.item?.name}),
+  );
+  const [valid, setValid] = useState(false);
   const formState = useSelector(state => state.form);
   const resetCleanForm = () => {
     dispatch(resetForm());
@@ -29,18 +38,21 @@ export default function Cleanservice({navigation, route}) {
       value: formState.name,
       onchange: value => handleFieldChange('name', value),
       placeholderText: 'Enter Name',
+      input: '',
     },
     {
       text: 'Street Address',
       value: formState.street,
       onchange: value => handleFieldChange('street', value),
       placeholderText: 'Enter Street',
+      input: '',
     },
     {
       text: 'Mobile Number',
       value: formState.mobileNumber,
       onchange: value => handleFieldChange('mobileNumber', value),
       placeholderText: 'Enter Phone',
+      input: 'numeric',
     },
 
     {
@@ -48,18 +60,21 @@ export default function Cleanservice({navigation, route}) {
       value: formState.city,
       onchange: value => handleFieldChange('city', value),
       placeholderText: 'Enter City',
+      input: '',
     },
     {
       text: 'Country',
       value: formState.country,
       onchange: value => handleFieldChange('country', value),
       placeholderText: 'Enter Country',
+      input: '',
     },
     {
       text: 'Number of Rooms',
       value: formState.norooms,
       onchange: value => handleFieldChange('norooms', value.value),
       isDropdown: true,
+      input: '',
     },
   ];
   const handleFieldChange = (field, value) => {
@@ -73,10 +88,30 @@ export default function Cleanservice({navigation, route}) {
     {label: '5', value: '5'},
     {label: '6', value: '6'},
   ];
+  const isEmptyObject = obj => {
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (!obj[key] && obj[key] !== 0) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+  const DURATION = 1000;
 
   const handleSubmit = () => {
     console.log(formState, 'submitform');
-    createCleanForm.mutate(formState);
+    const keys = isEmptyObject(formState);
+    if (keys) {
+      setValid(true);
+      Vibration.vibrate(DURATION);
+      setTimeout(() => {
+        setValid(false);
+      }, 3000);
+    } else {
+      createCleanForm.mutate(formState);
+    }
   };
 
   return (
@@ -99,6 +134,8 @@ export default function Cleanservice({navigation, route}) {
         <ScrollView style={{padding: 10, flex: 1}}>
           <View style={{marginBottom: 50}}>
             {inputs.map((item, i) => {
+              console.log(item, 'items');
+
               return (
                 <View
                   key={i}
@@ -110,10 +147,10 @@ export default function Cleanservice({navigation, route}) {
                     {item.text}
                   </Text>
                   {!item.isDropdown ? (
-                    <MainFormInput
-                      value={item.value}
-                      placeholderText={item.placeholderText}
-                      onChangeText={item.onchange}
+                    <ListItem
+                      item={item}
+                      index={i}
+                      animation={i % 2 === 0 ? 'left' : 'right'}
                     />
                   ) : (
                     <Dropdown
@@ -140,7 +177,28 @@ export default function Cleanservice({navigation, route}) {
           </View>
         </ScrollView>
         <View style={{width: '100%', paddingHorizontal: 20, marginBottom: 15}}>
-          <MainFormButton buttonTitle="Next" onPress={handleSubmit} />
+          {valid ? (
+            <View
+              style={{
+                backgroundColor: COLORS.primary,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 10,
+              }}>
+              <LottieView
+                source={ANIMATIONS.smiley}
+                autoPlay
+                loop={true}
+                duration={2000}
+                style={{
+                  width: 100,
+                  height: 60,
+                }}
+              />
+            </View>
+          ) : (
+            <MainFormButton buttonTitle="Next" onPress={handleSubmit} />
+          )}
         </View>
       </ScreenView>
     </View>

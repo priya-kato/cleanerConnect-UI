@@ -4,8 +4,10 @@ import {windowHeight, windowWidth} from '../utills/Dimensions';
 import {COLORS} from '../assets/color';
 
 export default function MainFormInput({labelValue, placeholderText, ...rest}) {
+  console.log(labelValue,"labelValue")
   return (
     <TextInput
+      testID="input-field"
       value={labelValue}
       style={styles.input}
       numberOfLines={1}

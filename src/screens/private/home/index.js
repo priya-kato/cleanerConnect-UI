@@ -9,6 +9,7 @@ import {
   PermissionsAndroid,
   BackHandler,
   Alert,
+  Platform,
 } from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import React, {useRef, useEffect, useState, useCallback} from 'react';
@@ -50,27 +51,30 @@ const DATA = [
     image: IMAGES.home1,
   },
 ];
-export default function HomeScreen({navigation}) {
+export default function HomeScreen({navigation, setState}) {
   const [click, setClick] = useState(false);
   const [name, sename] = useState(false);
   const handleClick = () => {
     setClick(!click);
+    setState && setState(!click);
   };
 
   const rotateValue = useRef(new Animated.Value(0)).current;
   const shakeX = useRef(new Animated.Value(0)).current;
   useEffect(() => {
-    PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
-      name: 'Contacts',
-      message: 'This app would like to view your contacts.',
-      buttonPositive: 'Please accept bare mortal',
-    })
-      .then(res => {
-        console.log('Permission: ', res);
+    if (Platform.OS === 'android') {
+      PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
+        name: 'Contacts',
+        message: 'This app would like to view your contacts.',
+        buttonPositive: 'Please accept bare mortal',
       })
-      .catch(error => {
-        console.error('Permission error: ', error);
-      });
+        .then(res => {
+          console.log('Permission: ', res);
+        })
+        .catch(error => {
+          console.error('Permission error: ', error);
+        });
+    }
   }, []);
   useFocusEffect(
     React.useCallback(() => {
@@ -145,6 +149,7 @@ export default function HomeScreen({navigation}) {
   //   [name],
   // );
   const memoizedCallback = useCallback(item => {
+    console.log(item, 'selecteditem');
     navigation.navigate('CleanService', {item: item});
   });
   return (
@@ -154,6 +159,7 @@ export default function HomeScreen({navigation}) {
       </View>
       <ScreenView>
         <TouchableOpacity
+          testID={'list-click'}
           onPress={handleClick}
           style={{width: '100%', alignItems: 'center', marginVertical: 20}}>
           <Text style={{color: click ? 'pink' : COLORS.primary, fontSize: 20}}>
@@ -166,8 +172,12 @@ export default function HomeScreen({navigation}) {
         <View style={{paddingHorizontal: 10, flex: 1}}>
           <FlatList
             data={DATA}
-            renderItem={({item}) => (
-              <RenderHome item={item} onpress={memoizedCallback} />
+            renderItem={({item, index}) => (
+              <RenderHome
+                item={item}
+                onpress={() => memoizedCallback(item)}
+                index={index}
+              />
             )}
             keyExtractor={item => item.id}
             numColumns={2}

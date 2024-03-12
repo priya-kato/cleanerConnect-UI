@@ -1,5 +1,10 @@
-import {useMutation} from '@tanstack/react-query';
-import {createHomeService, createService} from '../../api/create/createservice';
+import {useMutation, useQuery} from '@tanstack/react-query';
+import {
+  createHomeService,
+  createService,
+  createContact,
+  getUserApi,
+} from '../../api/create/createservice';
 
 export const createCleanQuery = (resetCleanForm, navigation) => {
   return useMutation(data => createHomeService(data), {
@@ -25,3 +30,19 @@ export const createServiceQuery = navigation => {
     },
   });
 };
+
+export const createContactQuery = (navigation, refetch, resetCleanForm) => {
+  return useMutation(data => createContact(data), {
+    onSuccess: async data => {
+      console.log(data?.data, 'usercreated');
+      refetch();
+      resetCleanForm();
+      navigation.navigate('Usertab');
+    },
+    onError: async error => {
+      console.log(error, 'queryerrr');
+    },
+  });
+};
+
+export const getUserQuery = () => useQuery(['getuser'], () => getUserApi());

@@ -3,8 +3,6 @@ import {View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {COLORS} from '../components/assets/color';
-import {PrivateNavigator} from './privateNavigation';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   BottomHomeIcon,
   BottomUserIcon,
@@ -17,7 +15,7 @@ import UserScreen from '../screens/private/user';
 import NotificationScreen from '../screens/private/notification';
 import HistoryScreen from '../screens/private/history';
 import {PrivateStackNavigator} from './privateNavigation';
-import { PublicNavigation } from './publicNavigation';
+import {PublicNavigation} from './publicNavigation';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import HomeScreen from '../screens/private/home';
@@ -112,7 +110,6 @@ export const MyTabs = () => {
 };
 
 export default function Navigation() {
-  console.log('callscreen');
   return (
     <View style={{flex: 1, backgroundColor: COLORS.backgroundColor}}>
       <NavigationContainer>
@@ -138,8 +135,6 @@ export default function Navigation() {
             component={PublicNavigation}
           />
         </StackScreen.Navigator>
-        {/* <PrivateNavigator tabScreens={MyTabs} /> */}
-        {/* <PrivateStackNavigator tabScreens={MyTabs} /> */}
       </NavigationContainer>
     </View>
   );
