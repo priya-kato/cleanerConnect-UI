@@ -3,6 +3,7 @@ import React from 'react';
 import {BackArrowIcon, ReferIcon} from '../vectors';
 import {COLORS} from '../assets/color';
 import {IMAGES} from '../images';
+import CustomImage from '../dynamicForms/customImage';
 
 export default function Header({
   isTab,
@@ -10,7 +11,7 @@ export default function Header({
   navigation,
   backColor,
   nameColor,
-  lineColor
+  lineColor,
 }) {
   if (isTab) {
     return (
@@ -26,20 +27,9 @@ export default function Header({
         <TouchableOpacity
           onPress={() => navigation.navigate('Profile')}
           style={{
-            height: 70,
-            width: 70,
-            borderRadius: 100,
-            backgroundColor: COLORS.white,
             marginHorizontal: 10,
           }}>
-          <Image
-            style={{
-              height: 70,
-              width: 70,
-              borderRadius: 100,
-            }}
-            source={IMAGES.profileImage}
-          />
+          <CustomImage src={IMAGES.profileImage} />
         </TouchableOpacity>
         <View style={{width: '50%'}}>
           <Text

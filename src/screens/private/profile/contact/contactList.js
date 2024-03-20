@@ -12,7 +12,7 @@ const Contact = ({contact}) => {
   const initiateSMS = mobileNumber => {
     console.log(mobileNumber, 'phoneNumber');
     // Check for perfect 10 digit length
-    if (mobileNumber.length != 10) {
+    if (mobileNumber?.length < 10) {
       alert('Please insert correct contact number');
       return;
     }

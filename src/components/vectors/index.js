@@ -12,6 +12,10 @@ import {ReferIcon} from './vectorSvg/referIcon';
 import {NextArrorwIcon} from './vectorSvg/netArrowIcon';
 import MessageIcon from './vectorSvg/message';
 import SendIcon from './vectorSvg/sendIcon';
+import {StarIcon} from './vectorSvg/startIcon';
+import {HeartIcon} from './vectorSvg/heartIcon';
+import {PlayIcon} from './vectorSvg/playIcon';
+import {PauseIcon} from './vectorSvg/pauseIcon';
 
 export {
   BackArrowIcon,
@@ -27,5 +31,9 @@ export {
   ReferIcon,
   NextArrorwIcon,
   MessageIcon,
-  SendIcon
+  SendIcon,
+  StarIcon,
+  HeartIcon,
+  PlayIcon,
+  PauseIcon,
 };

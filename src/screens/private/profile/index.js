@@ -52,7 +52,13 @@ export default function ProfileScreen({navigation}) {
     ]);
   };
   const menus = [
-    {name: 'Edit profile', icon: <EditProfileIcon />, onclick: () => {}},
+    {
+      name: 'Edit profile',
+      icon: <EditProfileIcon />,
+      onclick: () => {
+        navigation.navigate('EditProfile');
+      },
+    },
     {
       name: 'Settings',
       icon: <SettingIcon />,

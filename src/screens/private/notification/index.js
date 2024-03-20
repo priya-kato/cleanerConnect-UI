@@ -3,6 +3,7 @@ import React from 'react';
 import {COLORS} from '../../../components/assets/color';
 import Header from '../../../components/headers/header';
 import ScreenView from '../../../components/commonScreen/screenView';
+import CustomMap from '../../../components/dynamicForms/customMap';
 
 export default function NotificationScreen({navigation}) {
   return (
@@ -10,7 +11,9 @@ export default function NotificationScreen({navigation}) {
       <View>
         <Header name="Notifications" isTab navigation={navigation} />
       </View>
-      <ScreenView></ScreenView>
+      <ScreenView>
+        <CustomMap />
+      </ScreenView>
     </View>
   );
 }

@@ -1,10 +1,11 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {COLORS} from '../../../components/assets/color';
+import CustomCard from '../../../components/dynamicForms/customCard';
 
 export default function RenderUser({item, navigation}) {
   return (
-    <TouchableOpacity
+    <CustomCard
       onPress={() => {
         navigation.navigate('ChatScreen', {item: item});
       }}
@@ -17,6 +18,6 @@ export default function RenderUser({item, navigation}) {
       }}>
       <Text style={{color: COLORS.primary}}>{item.firstname}</Text>
       <Text style={{color: 'black', top: 8}}>{item.phonenumber}</Text>
-    </TouchableOpacity>
+    </CustomCard>
   );
 }

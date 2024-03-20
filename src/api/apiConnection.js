@@ -29,7 +29,6 @@ connection.interceptors.request.use(
 connection.interceptors.response.use(
   response => {
     // Do something with response data
-    console.log('Response Interceptor:', response);
     return response;
   },
   error => {

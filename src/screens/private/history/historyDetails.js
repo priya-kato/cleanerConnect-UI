@@ -2,7 +2,7 @@ import {View, Text} from 'react-native';
 import React from 'react';
 import Header from '../../../components/headers/header';
 import {COLORS} from '../../../components/assets/color';
-import MainFormButton from '../../../components/mainForm/mainButton';
+import CustomButton from '../../../components/dynamicForms/customButton';
 
 export default function HistoryDetails({navigation, route}) {
   const {item} = route?.params;
@@ -48,8 +48,8 @@ export default function HistoryDetails({navigation, route}) {
           bottom: 10,
           paddingHorizontal: 20,
         }}>
-        <MainFormButton buttonTitle="Cancel" />
-        <MainFormButton buttonTitle="Rebooking" />
+        <CustomButton buttonTitle="Cancel" />
+        <CustomButton buttonTitle="Rebooking" />
       </View>
     </View>
   );

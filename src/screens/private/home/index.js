@@ -3,13 +3,12 @@ import {
   TouchableOpacity,
   Text,
   FlatList,
-  Image,
-  ScrollView,
   Animated,
   PermissionsAndroid,
   BackHandler,
   Alert,
   Platform,
+  useColorScheme,
 } from 'react-native';
 import {useFocusEffect} from '@react-navigation/native';
 import React, {useRef, useEffect, useState, useCallback} from 'react';
@@ -18,6 +17,7 @@ import Header from '../../../components/headers/header';
 import ScreenView from '../../../components/commonScreen/screenView';
 import {IMAGES} from '../../../components/images';
 import RenderHome from './renderHome';
+import CustomImage from '../../../components/dynamicForms/customImage';
 
 const DATA = [
   {

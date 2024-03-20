@@ -2,6 +2,7 @@ import {View, Image, Text} from 'react-native';
 import React from 'react';
 import {IMAGES} from '../../../components/images';
 import {COLORS} from '../../../components/assets/color';
+import CustomImage from '../../../components/dynamicForms/customImage';
 
 export const ProfileView = () => {
   return (
@@ -19,13 +20,9 @@ export const ProfileView = () => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Image
-          style={{
-            height: 100,
-            width: 100,
-            borderRadius: 100,
-          }}
-          source={IMAGES.profileImage}
+        <CustomImage
+          src={IMAGES.profileImage}
+          imagestyle={{height: 100, width: 100, borderRadius: 100}}
         />
       </View>
       <Text style={{color: COLORS.white, marginTop: 20, fontWeight: '700'}}>

@@ -12,13 +12,14 @@ import {COLORS} from '../../../components/assets/color';
 import ScreenView from '../../../components/commonScreen/screenView';
 import MainFormInput from '../../../components/mainForm/mainInput';
 import {Dropdown} from 'react-native-element-dropdown';
-import MainFormButton from '../../../components/mainForm/mainButton';
+import CustomButton from '../../../components/dynamicForms/customButton';
 import {updateFormField, resetForm} from './cleanFormSlice';
 import {useSelector, useDispatch} from 'react-redux';
 import {createCleanQuery} from '../../../hooks/createQuery/createCleanQuery';
 import LottieView from 'lottie-react-native';
 import {ANIMATIONS} from '../../../components/animations';
 import ListItem from './listItem';
+import CustomDropDown from '../../../components/dynamicForms/customDropDown';
 
 export default function Cleanservice({navigation, route}) {
   const dispatch = useDispatch();
@@ -153,22 +154,10 @@ export default function Cleanservice({navigation, route}) {
                       animation={i % 2 === 0 ? 'left' : 'right'}
                     />
                   ) : (
-                    <Dropdown
-                      style={styles.dropdown}
-                      placeholderStyle={styles.placeholderStyle}
-                      selectedTextStyle={styles.selectedTextStyle}
-                      inputSearchStyle={styles.inputSearchStyle}
-                      iconStyle={styles.iconStyle}
+                    <CustomDropDown
                       data={data}
-                      search
-                      maxHeight={300}
-                      labelField="label"
-                      valueField="value"
-                      placeholder="Select item"
-                      searchPlaceholder="Search..."
-                      itemTextStyle={{color: COLORS.primary}}
                       value={item.value}
-                      onChange={item.onchange}
+                      onchange={item.onchange}
                     />
                   )}
                 </View>
@@ -197,7 +186,7 @@ export default function Cleanservice({navigation, route}) {
               />
             </View>
           ) : (
-            <MainFormButton buttonTitle="Next" onPress={handleSubmit} />
+            <CustomButton buttonTitle="Next" onPress={handleSubmit} />
           )}
         </View>
       </ScreenView>

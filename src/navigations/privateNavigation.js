@@ -16,6 +16,8 @@ import HistoryDetails from '../screens/private/history/historyDetails';
 import CreateContact from '../screens/private/user/createContact';
 import ChatScreen from '../screens/private/user/chatScreen';
 import FindExperts from '../screens/private/experts';
+import EditProfile from '../screens/private/profile/editprofile.js/editProfile';
+import CustomVideo from '../components/dynamicForms/customVideoPlayer';
 
 const StackScreen = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -114,6 +116,8 @@ export const PrivateStackNavigator = ({tabScreens}) => {
     {name: 'CreateContact', component: CreateContact},
     {name: 'ChatScreen', component: ChatScreen},
     {name: 'FindExperts', component: FindExperts},
+    {name: 'EditProfile', component: EditProfile},
+    {name: 'CustomVideo', component: CustomVideo},
   ];
   return (
     <StackScreen.Navigator
